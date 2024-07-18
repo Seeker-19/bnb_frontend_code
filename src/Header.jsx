@@ -73,10 +73,10 @@ const Header = () => {
             />
           </svg>
 
-          <span className="font-bold text-xl">airtravel</span>
+          <span className="font-bold text-sm lg:text-xl">airtravel</span>
         </Link>
 
-        <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-400">
+        <div className="lg:flex gap-2 border border-gray-300 rounded-full hidden py-2 px-4 shadow-md shadow-gray-400">
           <div>Anywhere</div>
           <div className="border-l border-gray-300"></div>
           <div>Any week</div>

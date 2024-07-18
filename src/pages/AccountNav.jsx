@@ -32,7 +32,7 @@ const AccountNav = () => {
     <>
       <nav className="w-full flex mt-10 mb-10 gap-8 items-center justify-center">
         <Link className={linkClasses("profile")} to={"/account"}>
-          My profile
+          <p className="text-sm lg:text-xl">My profile</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ const AccountNav = () => {
           </svg>
         </Link>
         <Link className={linkClasses("bookings")} to={"/account/bookings"}>
-          My Bookings
+          <span className="text-sm lg:text-lg">My Bookings</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ const AccountNav = () => {
           </svg>
         </Link>
         <Link className={linkClasses("places")} to={"/account/places"}>
-          My accomodations
+          <span className="text-sm lg:text-lg">My Accomodations</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

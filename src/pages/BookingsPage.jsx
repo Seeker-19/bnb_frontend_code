@@ -147,7 +147,7 @@ const BookingsPage = () => {
                   <div className="py-3 w-full">
                     <h2 className="text-xl">{booking?.place?.title}</h2>
 
-                    <div className="text-xl">
+                    <div className="lg:text-xl text-sm">
                       <BookingDates
                         booking={booking}
                         className="mt-4 mb-4 text-gray-600"
@@ -160,7 +160,7 @@ const BookingsPage = () => {
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
                               fill="currentColor"
-                              className="w-8 h-8"
+                              className="w-5 h-5 lg:w-8 lg:h-8"
                             >
                               <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
                               <path
@@ -169,7 +169,7 @@ const BookingsPage = () => {
                                 clipRule="evenodd"
                               />
                             </svg>
-                            <span className="text-lg">
+                            <span className="text-sm lg:text-lg">
                               Total Price: ${booking?.price}
                             </span>
                           </div>
