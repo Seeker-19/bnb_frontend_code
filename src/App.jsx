@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import IndexPage from "./pages/IndexPage";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./Layout";
@@ -20,7 +25,27 @@ import { getToken } from "./api.js";
 function App() {
   const { user, setUser, loading, setLoading } = useContext(Context);
   const [refresh, setRefresh] = useState(false);
-  //const history = useNavigate();
+  const history = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const checkToken = async () => {
+      let isToken = await getToken();
+      if (
+        !isToken &&
+        location.pathname !== "/login" &&
+        location.pathname !== "/register"
+      ) {
+        history("/");
+        //console.log("run");
+        //setUser(null);
+      }
+
+      //console.log("app run");
+    };
+
+    checkToken();
+  }, [history]);
 
   const getUser = async () => {
     try {
@@ -50,7 +75,7 @@ function App() {
   //console.log(user);
 
   return (
-    <Router>
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<IndexPage />} />
@@ -67,7 +92,7 @@ function App() {
         </Route>
       </Routes>
       <Toaster />
-    </Router>
+    </>
   );
 }
 
