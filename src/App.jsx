@@ -45,7 +45,7 @@ function App() {
     };
 
     checkToken();
-  }, [history]);
+  }, [history, location.pathname]);
 
   const getUser = async () => {
     try {
