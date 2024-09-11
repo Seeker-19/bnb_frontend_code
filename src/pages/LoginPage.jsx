@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Context, server } from "../main.jsx";
+import { getToken } from "../api.js";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,17 @@ const LoginPage = () => {
 
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
     useContext(Context);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      let isToken = await getToken();
+      if (isToken) {
+        history("/");
+      }
+    };
+
+    checkToken();
+  }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
