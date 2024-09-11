@@ -52,17 +52,17 @@ const PlaceFront = () => {
   //     return;
   //   }
   // }, [isAuthenticated]);
-  useEffect(() => {
-    const checkToken = async () => {
-      let isToken = await getToken();
-      if (!isToken) {
-        history("/");
-        setUser(null);
-      }
-    };
+  // useEffect(() => {
+  //   const checkToken = async () => {
+  //     let isToken = await getToken();
+  //     if (!isToken) {
+  //       history("/");
+  //       setUser(null);
+  //     }
+  //   };
 
-    checkToken();
-  }, [history]);
+  //   checkToken();
+  // }, [history]);
 
   //grid overflow-hidden rounded-2xl
   //-mx-6 min-h-full

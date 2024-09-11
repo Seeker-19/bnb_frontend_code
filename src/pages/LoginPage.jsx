@@ -15,16 +15,16 @@ const LoginPage = () => {
   const { isAuthenticated, setIsAuthenticated, loading, setLoading } =
     useContext(Context);
 
-  useEffect(() => {
-    const checkToken = async () => {
-      let isToken = await getToken();
-      if (isToken) {
-        history("/");
-      }
-    };
+  // useEffect(() => {
+  //   const checkToken = async () => {
+  //     let isToken = await getToken();
+  //     if (isToken) {
+  //       history("/");
+  //     }
+  //   };
 
-    checkToken();
-  }, [history]);
+  //   checkToken();
+  // }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

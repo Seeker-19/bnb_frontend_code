@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 export const server = import.meta.env.VITE_SERVER;
@@ -16,18 +16,20 @@ const AppWrapper = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <Context.Provider
-      value={{
-        user,
-        setUser,
-        isAuthenticated,
-        setIsAuthenticated,
-        loading,
-        setLoading,
-      }}
-    >
-      <App />
-    </Context.Provider>
+    <Router>
+      <Context.Provider
+        value={{
+          user,
+          setUser,
+          isAuthenticated,
+          setIsAuthenticated,
+          loading,
+          setLoading,
+        }}
+      >
+        <App />
+      </Context.Provider>
+    </Router>
   );
 };
 ReactDOM.createRoot(document.getElementById("root")).render(

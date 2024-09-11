@@ -15,18 +15,6 @@ const Account = () => {
   const location = useLocation();
   console.log(location);
 
-  useEffect(() => {
-    const checkToken = async () => {
-      let isToken = await getToken();
-      if (!isToken) {
-        history("/");
-        setUser(null);
-      }
-    };
-
-    checkToken();
-  }, [history]);
-
   // let { subpage } = useParams();
 
   // if (subpage === undefined) {
