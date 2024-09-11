@@ -5,6 +5,7 @@ import axios from "axios";
 import { server } from "../main";
 import Loader from "./Loader.jsx";
 import _ from "lodash";
+import { getToken } from "../api.js";
 
 const IndexPage = () => {
   const [places, setPlaces] = useState([]);
@@ -48,6 +49,18 @@ const IndexPage = () => {
       getPlaces();
     }
   }, [searchQuery]);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      let isToken = await getToken();
+      if (!isToken) {
+        //history("/");
+        setUser(null);
+      }
+    };
+
+    checkToken();
+  }, [history]);
 
   return (
     <div>
