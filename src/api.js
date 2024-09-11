@@ -9,7 +9,7 @@ export const getToken = async () => {
 
     //console.log(token);
 
-    if (data?.token) {
+    if (data?.success) {
       return true;
     } else {
       return false;
