@@ -49,9 +49,9 @@ const LoginPage = () => {
       setLoading(false);
 
       history("/");
-      setTimeout(() => {
-        window.location.reload();
-      }, 600);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 600);
     } catch (error) {
       setLoading(false);
       setIsAuthenticated(false);

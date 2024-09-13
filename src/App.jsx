@@ -68,9 +68,12 @@ function App() {
   };
 
   useEffect(() => {
-    getUser();
+    if (!user) {
+      getUser();
+    }
+
     console.log("app");
-  }, []);
+  }, [history]);
 
   //console.log(user);
 
