@@ -103,7 +103,7 @@ const Booking = ({ place }) => {
       <form onSubmit={bookThisPlace}>
         <div className="bg-white rounded-2xl p-4">
           <div className="text-2xl text-center">
-            Price: ${place?.price} / per night
+            Price: Rs.{place?.price} / per night
           </div>
           <div className="border rounded-2xl mt-4">
             <div className="flex">

@@ -170,6 +170,54 @@ const PlaceForm = () => {
       });
   }, [id]);
 
+  const handleCheckInChange = (e) => {
+    let checkInTime = e.target.value;
+
+    const [hours, minutes] = checkInTime.split(":");
+
+    if (parseInt(hours, 10) > 23 || parseInt(minutes, 10) > 59) {
+      toast.error(
+        "Invalid time. Please enter a valid time between 00:00 and 23:59."
+      );
+      setCheckIn("");
+      return;
+    }
+
+    setCheckIn(checkInTime);
+  };
+
+  const handleCheckout = (e) => {
+    const checkOutTime = e.target.value;
+
+    const [hours, minutes] = checkOutTime.split(":");
+
+    if (parseInt(hours, 10) > 23 || parseInt(minutes, 10) > 59) {
+      toast.error(
+        "Invalid time. Please enter a valid time between 00:00 and 23:59."
+      );
+      setCheckOut("");
+      return;
+    }
+
+    console.log(checkIn, checkOutTime);
+
+    if (checkIn) {
+      const checkInDate = new Date(`1970-01-01T${checkIn}`);
+      const checkOutDate = new Date(`1970-01-01T${checkOutTime}`);
+
+      const diffInMinutes = (checkOutDate - checkInDate) / (1000 * 60);
+
+      if (diffInMinutes < 120) {
+        toast.error("Checkout time must be at least 2 hours after check-in.");
+
+        setCheckOut("");
+        return;
+      }
+    }
+
+    setCheckOut(checkOutTime);
+  };
+
   return (
     <>
       <AccountNav />
@@ -241,8 +289,7 @@ const PlaceForm = () => {
           Check in& out times
         </h2>
         <p className="text-gray-500 text-sm">
-          add check in and out times remember to have some time window between
-          guets.{" "}
+          add check in and out times remember to have some time window between{" "}
         </p>
         <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
           <div>
@@ -252,7 +299,7 @@ const PlaceForm = () => {
               name="cehckin"
               id="checkin"
               value={checkIn}
-              onChange={(e) => setCheckIn(e.target.value)}
+              onChange={handleCheckInChange}
               placeholder="14:00"
             />
           </div>
@@ -263,7 +310,7 @@ const PlaceForm = () => {
               name="checkout"
               id="checkout"
               value={checkOut}
-              onChange={(e) => setCheckOut(e.target.value)}
+              onChange={handleCheckout}
               placeholder="14:00"
             />
           </div>

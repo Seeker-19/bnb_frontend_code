@@ -134,15 +134,20 @@ const PlaceFront = () => {
           </div>
 
           <div className="bg-white -mx-8 px-8 py-8 border-t">
-            <div>
-              <h2 className="font-semibold text-2xl">Extra Info</h2>
-            </div>
-            <div
-              className="mt-2
+            {place?.extraInfo && (
+              <>
+                {" "}
+                <div>
+                  <h2 className="font-semibold text-2xl">Extra Info</h2>
+                </div>
+                <div
+                  className="mt-2
               onClick={()=>setShowAllPhotos(true)} text-sm text-gray-700 leading-6 "
-            >
-              {place?.extraInfo}
-            </div>
+                >
+                  {place?.extraInfo}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
