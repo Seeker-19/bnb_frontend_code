@@ -106,7 +106,7 @@ const PlaceFront = () => {
   return (
     <>
       {!showAllPhotos && (
-        <div className="mt-4 -mx-8 px-8 pt-8 bg-gray-100">
+        <div className="mt-4 -mx-4 px-8 pt-8 bg-gray-100">
           <h1 className="text-3xl">{place?.title}</h1>
           <AddressLink>{place?.address}</AddressLink>
 

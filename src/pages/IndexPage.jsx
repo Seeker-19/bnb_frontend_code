@@ -50,17 +50,18 @@ const IndexPage = () => {
     }
   }, [searchQuery]);
 
-  useEffect(() => {
-    const checkToken = async () => {
-      let isToken = await getToken();
-      if (!isToken) {
-        //history("/");
-        setUser(null);
-      }
-    };
+  // useEffect(() => {
+  //   const checkToken = async () => {
+  //     let isToken = await getToken();
+  //     if (!isToken) {
+  //       //history("/");
+  //       setUser(null);
+  //     }
+  //   };
 
-    checkToken();
-  }, [history]);
+  //   checkToken();
+  //   console.log("token");
+  // }, [history]);
 
   return (
     <div>
