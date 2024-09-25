@@ -65,17 +65,6 @@ const BookingsPage = () => {
   //     history("/");
   //   }
   // }, [isAuthenticated]);
-  useEffect(() => {
-    const checkToken = async () => {
-      let isToken = await getToken();
-      if (!isToken) {
-        history("/");
-        setUser(null);
-      }
-    };
-
-    checkToken();
-  }, [history]);
 
   const [searchQuery, setSearchQuery] = useState("");
 

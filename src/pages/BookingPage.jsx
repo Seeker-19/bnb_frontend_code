@@ -80,14 +80,21 @@ const BookingPage = () => {
     getBook();
   }, [id]);
 
-  useEffect(() => {
-    if (!getToken()) {
-      history("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!getToken()) {
+  //     history("/");
+  //   }
+  // }, []);
 
   const checkoutHandler = async (amount) => {
     try {
+      let token = await getToken();
+
+      if (!token) {
+        toast.error("Pls Login again");
+        history("/");
+        return;
+      }
       const {
         data: { key },
       } = await axios.get(`${server}/getkey`);

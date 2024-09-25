@@ -14,6 +14,7 @@ const Booking = ({ place }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [disable, setDisable] = useState(false);
 
   const history = useNavigate();
 
@@ -33,6 +34,7 @@ const Booking = ({ place }) => {
     e.preventDefault();
 
     try {
+      setDisable(true);
       const { data } = await axios.post(
         `${server}/bookings/booking`,
         {
@@ -58,6 +60,7 @@ const Booking = ({ place }) => {
 
       const bookingId = data.restplace._id;
       console.log(bookingId);
+      setDisable(false);
 
       toast.success(data.message);
       history(`/account/bookings/${bookingId}`);
@@ -155,7 +158,7 @@ const Booking = ({ place }) => {
             )}
           </div>
 
-          <button className="prim mt-4" type="submit">
+          <button disabled={disable} className="prim mt-4" type="submit">
             Book this place
             {numberOfNights > 0 && (
               <span>&nbsp;${numberOfNights * place?.price}</span>
