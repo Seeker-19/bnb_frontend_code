@@ -211,10 +211,16 @@ const BookingPage = () => {
 
             <div
               className="bg-primary px-6 py-4 text-white rounded-2xl hover:bg-red-500 cursor-pointer"
-              onClick={() => checkoutHandler(booking?.price)}
+              onClick={() => {
+                if (booking?.booked) {
+                  toast.error("Already Booked");
+                } else {
+                  checkoutHandler(booking?.price);
+                }
+              }}
             >
               <div>Total price</div>
-              <div className="text-3xl">{booking?.price}</div>
+              <div className="text-3xl">Rs.{booking?.price}</div>
             </div>
           </div>
 
