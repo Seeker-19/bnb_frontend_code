@@ -11,7 +11,7 @@ const PlaceGallery = ({ place, setShowAllPhotos, showAllPhotos }) => {
             {place?.photos && (
               <img
                 onClick={() => setShowAllPhotos(true)}
-                className="cursor-pointer object-cover aspect-square"
+                className="cursor-pointer object-cover aspect-square w-full"
                 src={place?.photos[0]}
                 alt=""
               />
@@ -22,7 +22,7 @@ const PlaceGallery = ({ place, setShowAllPhotos, showAllPhotos }) => {
               {place?.photos && place?.photos[1] && (
                 <img
                   onClick={() => setShowAllPhotos(true)}
-                  className="cursor-pointer aspect-square object-cover"
+                  className="cursor-pointer aspect-square object-cover w-full"
                   src={place?.photos[1]}
                   alt=""
                 />
@@ -33,7 +33,7 @@ const PlaceGallery = ({ place, setShowAllPhotos, showAllPhotos }) => {
               {place?.photos && place?.photos[2] && (
                 <img
                   onClick={() => setShowAllPhotos(true)}
-                  className="cursor-pointer aspect-square object-cover"
+                  className="cursor-pointer aspect-square object-cover w-full"
                   src={place?.photos[2]}
                   alt=""
                 />
