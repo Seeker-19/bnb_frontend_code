@@ -65,7 +65,9 @@ const Booking = ({ place }) => {
       toast.success(data.message);
       history(`/account/bookings/${bookingId}`);
     } catch (error) {
-      toast.error(error.response.data.message);
+      setDisable(false);
+
+      toast.error("Pls enter the phone and date carefully");
 
       if (error.response.data.message === "First Login") {
         history("/");
@@ -101,6 +103,17 @@ const Booking = ({ place }) => {
   //   checkToken();
   // }, [history]);
 
+  const handleGuests = (e) => {
+    let guests = e.target.value;
+
+    if (guests > place?.maxGuests) {
+      toast.error(`Maximum guests allowed are ${place?.maxGuests}`);
+      setNumberOfGuests(place?.maxGuests);
+    } else {
+      setNumberOfGuests(guests);
+    }
+  };
+
   return (
     <>
       <form onSubmit={bookThisPlace}>
@@ -125,6 +138,7 @@ const Booking = ({ place }) => {
                   type="date"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
+                  min={new Date().toISOString().split("T")[0]}
                 />
               </div>
             </div>
@@ -133,7 +147,7 @@ const Booking = ({ place }) => {
               <input
                 type="number"
                 value={numberOfGuests}
-                onChange={(e) => setNumberOfGuests(e.target.value)}
+                onChange={handleGuests}
               />
             </div>
 
