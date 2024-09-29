@@ -299,6 +299,7 @@ const PlaceForm = () => {
               name="cehckin"
               id="checkin"
               value={checkIn}
+              required
               onChange={handleCheckInChange}
               placeholder="14:00"
             />
@@ -309,6 +310,7 @@ const PlaceForm = () => {
               type="text"
               name="checkout"
               id="checkout"
+              required
               value={checkOut}
               onChange={handleCheckout}
               placeholder="14:00"
@@ -321,6 +323,7 @@ const PlaceForm = () => {
               name="maxguests"
               id="maxguests"
               placeholder="100"
+              required
               value={maxGuests}
               onChange={(e) => setMaxGuests(e.target.value)}
             />
@@ -332,6 +335,7 @@ const PlaceForm = () => {
               name="maxguests"
               id="maxguests"
               placeholder="100"
+              required
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
