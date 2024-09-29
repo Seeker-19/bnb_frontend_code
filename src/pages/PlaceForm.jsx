@@ -173,16 +173,6 @@ const PlaceForm = () => {
   const handleCheckInChange = (e) => {
     let checkInTime = e.target.value;
 
-    const [hours, minutes] = checkInTime.split(":");
-
-    if (parseInt(hours, 10) > 23 || parseInt(minutes, 10) > 59) {
-      toast.error(
-        "Invalid time. Please enter a valid time between 00:00 and 23:59."
-      );
-      setCheckIn("");
-      return;
-    }
-
     setCheckIn(checkInTime);
   };
 
@@ -295,8 +285,8 @@ const PlaceForm = () => {
           <div>
             <h3 className="mt-2 mb-1">Check in time</h3>
             <input
-              type="text"
-              name="cehckin"
+              type="time"
+              name="checkin"
               id="checkin"
               value={checkIn}
               required
@@ -307,7 +297,7 @@ const PlaceForm = () => {
           <div>
             <h3 className="mt-2 mb-1">Check out time</h3>
             <input
-              type="text"
+              type="time"
               name="checkout"
               id="checkout"
               required
