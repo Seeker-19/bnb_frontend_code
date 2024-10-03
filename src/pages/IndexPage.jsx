@@ -79,10 +79,10 @@ const IndexPage = () => {
           {places.length > 0 &&
             places.map((place) => (
               <Link to={`place/${place._id}`} key={place._id}>
-                <div className="bg-gray-500 mb-2 rounded-2xl flex ">
+                <div className="bg-gray-300 mb-2 rounded-2xl flex h-[80%]">
                   {place?.photos[0] && (
                     <img
-                      className="rounded-2xl object-cover aspect-square"
+                      className="rounded-2xl object-cover aspect-square w-full"
                       src={place?.photos[0]}
                       alt=""
                     />

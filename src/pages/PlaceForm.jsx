@@ -195,7 +195,7 @@ const PlaceForm = () => {
       const checkInDate = new Date(`1970-01-01T${checkIn}`);
       const checkOutDate = new Date(`1970-01-01T${checkOutTime}`);
 
-      const diffInMinutes = (checkOutDate - checkInDate) / (1000 * 60);
+      const diffInMinutes = Math.abs(checkOutDate - checkInDate) / (1000 * 60);
 
       if (diffInMinutes < 120) {
         toast.error("Checkout time must be at least 2 hours after check-in.");

@@ -13,8 +13,16 @@ const PhotosUploader = ({
   addedPhotos,
   setAddedPhotos,
 }) => {
+  const isValidImageUrl = (url) => {
+    return /\.(jpg|jpeg|png|gif|bmp|webp)(\?.*)?$/i.test(url);
+  };
   const addPhotoLink = async (e) => {
     e.preventDefault();
+
+    if (!isValidImageUrl(photoLink)) {
+      toast.error("Invalid photo link! Please enter a valid image URL.");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -132,7 +140,7 @@ const PhotosUploader = ({
         />
         <button
           onClick={addPhotoLink}
-          disabled={loading}
+          disabled={loading || !photoLink}
           className="bg-gray-200 px-4 rounded-2xl font-bold"
         >
           Add&nbsp;photo
