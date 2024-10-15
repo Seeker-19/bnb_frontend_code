@@ -75,14 +75,14 @@ const IndexPage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid gap-x-6 gap-y-8 mt-8 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-x-6 gap-y-8 mt-8 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 overflow-y-auto mb-10">
           {places.length > 0 &&
             places.map((place) => (
               <Link to={`place/${place._id}`} key={place._id}>
-                <div className="bg-gray-300 mb-2 rounded-2xl flex h-[80%]">
+                <div className="bg-gray-300 mb-2 rounded-2xl flex h-[16rem] md:h-[20rem] w-full">
                   {place?.photos[0] && (
                     <img
-                      className="rounded-2xl object-cover aspect-square w-full"
+                      className="rounded-2xl object-cover aspect-square w-full h-full"
                       src={place?.photos[0]}
                       alt=""
                     />
