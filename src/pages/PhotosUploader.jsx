@@ -4,6 +4,7 @@ import axios from "axios";
 import { ser, server } from "../main.jsx";
 import toast from "react-hot-toast";
 import { uploadFile } from "../UploadFile.js";
+import { ColorRing } from "react-loader-spinner";
 
 const PhotosUploader = ({
   loading,
@@ -13,6 +14,7 @@ const PhotosUploader = ({
   addedPhotos,
   setAddedPhotos,
 }) => {
+  const [uploading, setUploading] = useState(false);
   const isValidImageUrl = (url) => {
     return /\.(jpg|jpeg|png|gif|bmp|webp)(\?.*)?$/i.test(url);
   };
@@ -61,6 +63,7 @@ const PhotosUploader = ({
 
     const files = e.target.files;
     // const data = new FormData();
+    setUploading(true);
 
     try {
       const fileUrls = [];
@@ -74,8 +77,11 @@ const PhotosUploader = ({
       console.log("Uploaded URLs:", fileUrls);
 
       setAddedPhotos((prev) => [...prev, ...fileUrls]);
+      setUploading(false);
     } catch (error) {
       console.error("File upload error:", error);
+      toast.error("File upload Error");
+      setUploading(false);
     }
 
     // for (let i = 0; i < files.length; i++) {
@@ -209,6 +215,19 @@ const PhotosUploader = ({
             </div>
           ))}
 
+        {uploading && (
+          <div className="flex items-center justify-center">
+            <ColorRing
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="color-ring-loading"
+              wrapperStyle={{}}
+              wrapperClass="color-ring-wrapper"
+              colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+            />
+          </div>
+        )}
         <label className="h-32 cursor-pointer flex gap-1 items-center justify-center bg-transparent border rounded-2xl p-8 text-gray-600 text-2xl">
           <input
             type="file"
