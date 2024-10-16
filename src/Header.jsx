@@ -73,7 +73,7 @@ const Header = () => {
             />
           </svg>
 
-          <span className="font-bold text-sm lg:text-xl">airtravel</span>
+          <span className="font-bold text-sm lg:text-xl">BnbTravel</span>
         </Link>
 
         <div className="lg:flex gap-2 border border-gray-300 rounded-full hidden py-2 px-4 shadow-md shadow-gray-400">
